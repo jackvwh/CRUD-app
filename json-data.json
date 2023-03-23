@@ -3,7 +3,7 @@
   "description":"Though it may look like its just a bunch of eggs, its a proper Pokémon. Exeggcute communicates with others of its kind via telepathy, apparently.",
   "ability": "Chloroform",
   "image": "images/exeggcutes.png",
-  "footprint": null,
+  "footprint": "",
   "dexindex": "#0103",
   "type": "Grass, Psychic",
   "subtype": "pre-chicken, rooster seemen",
