@@ -111,9 +111,7 @@ function showPokemon(pokemon) {
         </article>
         `;
       document.querySelector("#dialog").showModal();
-      document
-        .querySelector("#dialog")
-        .insertAdjacentHTML("beforeend", myHTML);
+      document.querySelector("#dialog").insertAdjacentHTML("beforeend", myHTML);
     }
 }
 showPokemon(exeggcutes);  
