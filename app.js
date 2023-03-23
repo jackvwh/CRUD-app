@@ -1,9 +1,11 @@
 "use strict";
 
-window.addEventListener("load", initApp);
+//github.com/jackvwh/CRUD-app/blob/master/json-data
+https: window.addEventListener("load", initApp);
 
-function initApp(){
-
+async function initApp(){
+    const pokemon = getPokemons("//github.com/jackvwh/CRUD-app/blob/master/json-data");
+    console.log(pokemon);
 }
 const exeggcutes = {
   name: "Exeggcute",
@@ -114,9 +116,17 @@ function showPokemon(pokemon) {
       document.querySelector("#dialog").insertAdjacentHTML("beforeend", myHTML);
     }
 }
-showPokemon(exeggcutes);  
-showPokemon(exeggcutes);  
-showPokemon(exeggcutes);  
+
+async function getPokemons(url){
+  const response = await fetch(`${url}`);
+  const pokemon = await fetch.json();
+  return pokemon;
+}
+
+
+
+
+
 showPokemon(exeggcutes);  
 showPokemon(exeggcutes);  
 showPokemon(exeggcutes);  
