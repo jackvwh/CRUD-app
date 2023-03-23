@@ -1,61 +1,62 @@
 "use strict";
 
-//github.com/jackvwh/CRUD-app/blob/master/json-data
 https: window.addEventListener("load", initApp);
 
+
 async function initApp(){
-    const pokemon = getPokemons("//github.com/jackvwh/CRUD-app/blob/master/json-data");
-    console.log(pokemon);
+    const poke = await getPokemons("https://raw.githubusercontent.com/jackvwh/CRUD-app/master/json-data.json");
+    console.log(poke);
+    showPokemon(poke);
 }
-const exeggcutes = {
-  name: "Exeggcute",
-  description:
-    "Though it may look like its just a bunch of eggs, its a proper Pokémon. Exeggcute communicates with others of its kind via telepathy, apparently.",
-  ability: "Chloroform",
-  image: "images/exeggcutes.png",
-  footprint: "images/exeggcutes.png",
-  dexindex: "#0103",
-  type: "Grass, Psychic",
-  subtype: "pre-chicken, rooster seemen",
-  weaknesses: "boiling water, bacon, foxes",
-  gender: "binary they/them",
-  weight: "fatty",
-  height: "egg height",
-  generation: "boomer",
-  spilversion: "first version",
-  canEvolve: "Grower. not a shower",
-  statsHP: "immortal",
-  statsAttack: "high",
-  statsDefence: "smell like fart",
-  statsSpecialAttack: "tal",
-  statsSpecialDefence: "tal",
-  statsSpeed: "fast",
-};
-function addPokemon(pokemon){
-  const myHTML = /*HTML*/ `
-  <li>Name: ${pokemon.name}</li>
-  <li>Description: ${pokemon.description}</li>
-  <li>Ability: ${pokemon.ability}</li>
-  <li>${pokemon.image}</li>
-  <li>${pokemon.footprint}</li>
-  <li>DexIndex: ${pokemon.dexindex}</li>
-  <li>SubType: ${pokemon.subtype}</li>
-  <li>Weaknesses: ${pokemon.weaknesses}</li>
-  <li>Gender: ${pokemon.gender}</li>
-  <li>Weight: ${pokemon.weight}</li>
-  <li>Height: ${pokemon.height}</li>
-  <li>Generation: ${pokemon.generation}</li>
-  <li>Spil Version: ${pokemon.spilversion}</li>
-  <li>Can Evolve: ${pokemon.canEvolve}</li>
-  <li>Stat HP: ${pokemon.statsHP}</li>
-  <li>Stats Attack: ${pokemon.statsAttack}</li>
-  <li>Stats Defence: ${pokemon.statsDefence}</li>
-  <li>Stats Special Attack: ${pokemon.statsSpecialAttack}</li>
-  <li>Stats Special Defence: ${pokemon.statsSpecialDefence}</li>
-  <li>Stats Speed: ${pokemon.statsSpeed}</li>
-  `;
-  document.querySelector("#pokemons").insertAdjacentHTML("beforeend", myHTML);
-}
+// const exeggcutes = {
+//   name: "Exeggcute",
+//   description:
+//     "Though it may look like its just a bunch of eggs, its a proper Pokémon. Exeggcute communicates with others of its kind via telepathy, apparently.",
+//   ability: "Chloroform",
+//   image: "images/exeggcutes.png",
+//   footprint: "images/exeggcutes.png",
+//   dexindex: "#0103",
+//   type: "Grass, Psychic",
+//   subtype: "pre-chicken, rooster seemen",
+//   weaknesses: "boiling water, bacon, foxes",
+//   gender: "binary they/them",
+//   weight: "fatty",
+//   height: "egg height",
+//   generation: "boomer",
+//   spilversion: "first version",
+//   canEvolve: "Grower. not a shower",
+//   statsHP: "immortal",
+//   statsAttack: "high",
+//   statsDefence: "smell like fart",
+//   statsSpecialAttack: "tal",
+//   statsSpecialDefence: "tal",
+//   statsSpeed: "fast",
+// };
+// function addPokemon(pokemon){
+//   const myHTML = /*HTML*/ `
+//   <li>Name: ${pokemon.name}</li>
+//   <li>Description: ${pokemon.description}</li>
+//   <li>Ability: ${pokemon.ability}</li>
+//   <li>${pokemon.image}</li>
+//   <li>${pokemon.footprint}</li>
+//   <li>DexIndex: ${pokemon.dexindex}</li>
+//   <li>SubType: ${pokemon.subtype}</li>
+//   <li>Weaknesses: ${pokemon.weaknesses}</li>
+//   <li>Gender: ${pokemon.gender}</li>
+//   <li>Weight: ${pokemon.weight}</li>
+//   <li>Height: ${pokemon.height}</li>
+//   <li>Generation: ${pokemon.generation}</li>
+//   <li>Spil Version: ${pokemon.spilversion}</li>
+//   <li>Can Evolve: ${pokemon.canEvolve}</li>
+//   <li>Stat HP: ${pokemon.statsHP}</li>
+//   <li>Stats Attack: ${pokemon.statsAttack}</li>
+//   <li>Stats Defence: ${pokemon.statsDefence}</li>
+//   <li>Stats Special Attack: ${pokemon.statsSpecialAttack}</li>
+//   <li>Stats Special Defence: ${pokemon.statsSpecialDefence}</li>
+//   <li>Stats Speed: ${pokemon.statsSpeed}</li>
+//   `;
+//   document.querySelector("#pokemons").insertAdjacentHTML("beforeend", myHTML);
+// }
 function showPokemon(pokemon) {
   const myHTML = /*HTML*/ `
   <article >
@@ -119,13 +120,9 @@ function showPokemon(pokemon) {
 
 async function getPokemons(url){
   const response = await fetch(`${url}`);
-  const pokemon = await fetch.json();
+  const pokemon = await response.json();
   return pokemon;
 }
-
-
-
-
 
 showPokemon(exeggcutes);  
 showPokemon(exeggcutes);  
