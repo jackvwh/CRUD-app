@@ -124,6 +124,3 @@ async function getPokemons(url){
   return pokemon;
 }
 
-showPokemon(exeggcutes);  
-showPokemon(exeggcutes);  
-showPokemon(exeggcutes);  
