@@ -1,50 +1,49 @@
 "use strict";
+// git@github.com:jackvwh/CRUD-app.git
 // https://raw.githubusercontent.com/jackvwh/CRUD-app/master/json-data.json
 
 https: window.addEventListener("load", initApp);
 
 async function initApp(){
-    const poke = await getPokemons("https://raw.githubusercontent.com/jackvwh/CRUD-app/master/json-data.json");
+    const poke = await getPokemons("json-data.json");
     console.log(poke);
-    showPokemon(poke);
-    showPokemon(poke);
-    showPokemon(poke);
+    for (let i = 0; i <= poke.length; i++) {
+      showPokemon(poke[i]);
+    }
 }
-
 function showPokemon(pokemon) {
-  const myHTML = /*HTML*/ `
-    <article class="grid-item">
-      <img src="${pokemon.image}"></img>
-      <h2>Name: <span> ${pokemon.name}</span></h2>
-      <h4>Description: <span>${pokemon.description}</span></h4>
-        <section>
-        <h4> Information </h4>
-            <ul>
-              <li>Ability: <span>${pokemon.ability}</span></li>
-              <li>DexIndex: <span>${pokemon.dexindex}</span></li>
-              <li>SubType: <span>${pokemon.subtype}</span></li>
-              <li>Weaknesses: <span>${pokemon.weaknesses}</span></li>
-              <li>Gender: <span>${pokemon.gender}</span></li>
-              <li>Weight: <span>${pokemon.weight}</span></li>
-              <li>Height: <span>${pokemon.height}</span></li>
-              <li>Generation: <span>${pokemon.generation}</span></li>
-              <li>Game Version: <span>${pokemon.spilversion}</span></li>
-              <li>Can Evolve: <span>${pokemon.canEvolve}</span></li>
-              <li>Stat HP: <span>${pokemon.statsHP}</span></li>
-              <li>Stats Attack: <span>${pokemon.statsAttack}</span></li>
-              <li>Stats Defence: <span>${pokemon.statsDefence}</span></li>
-              <li>Stats Special Attack: <span>${pokemon.statsSpecialAttack}</span></li>
-              <li>Stats Special Defence:<span>${pokemon.statsSpecialDefence}</span><li>
-              <li>Stats Speed: <span>${pokemon.statsSpeed}</span></li>  
-            </ul>
-          </section>
-    </article>
-    `;
-  document.querySelector("#pokemons").insertAdjacentHTML("beforeend", myHTML);
-  document
-    .querySelector("#pokemons article:last-child")
-    .addEventListener("click", pokemonClicked);
-
+      const myHTML = /*HTML*/ `
+      <article class="grid-item">
+        <img src="${pokemon.image}"></img>
+        <h2>Name: <span> ${pokemon.name}</span></h2>
+        <h4>Description: <span>${pokemon.description}</span></h4>
+          <section>
+          <h4> Information </h4>
+              <ul>
+                <li>Ability: <span>${pokemon.ability}</span></li>
+                <li>DexIndex: <span>${pokemon.dexindex}</span></li>
+                <li>SubType: <span>${pokemon.subtype}</span></li>
+                <li>Weaknesses: <span>${pokemon.weaknesses}</span></li>
+                <li>Gender: <span>${pokemon.gender}</span></li>
+                <li>Weight: <span>${pokemon.weight}</span></li>
+                <li>Height: <span>${pokemon.height}</span></li>
+                <li>Generation: <span>${pokemon.generation}</span></li>
+                <li>Game Version: <span>${pokemon.spilversion}</span></li>
+                <li>Can Evolve: <span>${pokemon.canEvolve}</span></li>
+                <li>Stat HP: <span>${pokemon.statsHP}</span></li>
+                <li>Stats Attack: <span>${pokemon.statsAttack}</span></li>
+                <li>Stats Defence: <span>${pokemon.statsDefence}</span></li>
+                <li>Stats Special Attack: <span>${pokemon.statsSpecialAttack}</span></li>
+                <li>Stats Special Defence:<span>${pokemon.statsSpecialDefence}</span><li>
+                <li>Stats Speed: <span>${pokemon.statsSpeed}</span></li>  
+              </ul>
+            </section>
+      </article>
+      `;
+      document.querySelector("#pokemons").insertAdjacentHTML("beforeend", myHTML);
+      document
+        .querySelector("#pokemons article:last-child")
+        .addEventListener("click", pokemonClicked);
   function pokemonClicked(){
       showPokeModal(pokemon);
     }
@@ -76,30 +75,49 @@ async function getPokemons(url){
   const pokemon = await response.json();
   return pokemon;
 }
+function showPokeTable(poke){
 
-function addPokemon(pokemon) {
+    pokeTableHead();
+
+    for (let i = 0; i <= poke.length; i++){
+      addPokeRow(poke[i]);
+    } 
+    // poke.forEach(addPokeRow => {});
+}
+function pokeTableHead(){
   const myHTML = /*HTML*/ `
-  <li>Name: ${pokemon.name}</li>
-  <li>Description: ${pokemon.description}</li>
-  <li>Ability: ${pokemon.ability}</li>
-  <li>${pokemon.image}</li>
-  <li>${pokemon.footprint}</li>
-  <li>DexIndex: ${pokemon.dexindex}</li>
-  <li>SubType: ${pokemon.subtype}</li>
-  <li>Weaknesses: ${pokemon.weaknesses}</li>
-  <li>Gender: ${pokemon.gender}</li>
-  <li>Weight: ${pokemon.weight}</li>
-  <li>Height: ${pokemon.height}</li>
-  <li>Generation: ${pokemon.generation}</li>
-  <li>Spil Version: ${pokemon.spilversion}</li>
-  <li>Can Evolve: ${pokemon.canEvolve}</li>
-  <li>Stat HP: ${pokemon.statsHP}</li>
-  <li>Stats Attack: ${pokemon.statsAttack}</li>
-  <li>Stats Defence: ${pokemon.statsDefence}</li>
-  <li>Stats Special Attack: ${pokemon.statsSpecialAttack}</li>
-  <li>Stats Special Defence: ${pokemon.statsSpecialDefence}</li>
-  <li>Stats Speed: ${pokemon.statsSpeed}</li>
+  <table id="poke-table">
+		<thead>
+				<tr>
+		      <th>Image</th>
+		      <th>Name</th>
+		      <th>Ability</th>
+		      <th>Gender</th>
+		      <th>Generation</th>
+		    </tr>
+		</thead>
+    `;
+      document
+        .querySelector("#pokemons")
+        .insertAdjacentHTML("beforeend", myHTML);
+}
+function addPokeRow(pokemon) {
+  const myHTML = /*HTML*/ `
+		<tbody>
+						<tr>
+                <td><img src="${poke.image}"></td>
+                <td>${poke.name}</td>
+                <td>${poke.ability}</td>
+                <td>${poke.gender}</td>
+                <td>${poke.generation}</td>
+            </tr>
+		</tbody>
+</table>
   `;
   document.querySelector("#pokemons").insertAdjacentHTML("beforeend", myHTML);
+    document
+      .querySelector("#pokemons tr:last-child")
+      .addEventListener("click", pokemonClicked);
+
 }
 
