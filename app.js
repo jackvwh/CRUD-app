@@ -5,10 +5,20 @@
 https: window.addEventListener("load", initApp);
 
 async function initApp(){
-    const poke = await getPokemons("json-data.json");
-    console.log(poke);
-    for (let i = 0; i <= poke.length; i++) {
-      showPokemon(poke[i]);
+    const pokeList = await getPokemons("json-data.json");
+    console.log(pokeList);
+    let choice = prompt(`Write "a" for card style or "b" for table style?`);
+    showStyle(choice, pokeList);
+    
+}
+function showStyle(choice, poke){
+    if (choice === "b") {
+      showPokeTable(poke);  
+    }
+    else {
+      for (let i = 0; i <= poke.length; i++) {
+        showPokemon(poke[i]);
+      }
     }
 }
 function showPokemon(pokemon) {
@@ -78,7 +88,6 @@ async function getPokemons(url){
 function showPokeTable(poke){
 
     pokeTableHead();
-
     for (let i = 0; i <= poke.length; i++){
       addPokeRow(poke[i]);
     } 
@@ -86,38 +95,38 @@ function showPokeTable(poke){
 }
 function pokeTableHead(){
   const myHTML = /*HTML*/ `
-  <table id="poke-table">
-		<thead>
-				<tr>
-		      <th>Image</th>
-		      <th>Name</th>
-		      <th>Ability</th>
-		      <th>Gender</th>
-		      <th>Generation</th>
-		    </tr>
-		</thead>
+      <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Ability</th>
+            <th>Gender</th>
+            <th>Generation</th>
+          </tr>
+      </thead>
     `;
       document
-        .querySelector("#pokemons")
+        .querySelector("#poke-table")
         .insertAdjacentHTML("beforeend", myHTML);
 }
-function addPokeRow(pokemon) {
+function addPokeRow(poke) {
   const myHTML = /*HTML*/ `
-		<tbody>
-						<tr>
-                <td><img src="${poke.image}"></td>
-                <td>${poke.name}</td>
-                <td>${poke.ability}</td>
-                <td>${poke.gender}</td>
-                <td>${poke.generation}</td>
-            </tr>
-		</tbody>
-</table>
+      <tr>
+          <td><img src="${poke.image}"></td>
+          <td>${poke.name}</td>
+          <td>${poke.ability}</td>
+          <td>${poke.gender}</td>
+          <td>${poke.generation}</td>
+      </tr>
   `;
-  document.querySelector("#pokemons").insertAdjacentHTML("beforeend", myHTML);
+  document.querySelector("tbody").insertAdjacentHTML("beforeend", myHTML);
     document
-      .querySelector("#pokemons tr:last-child")
+      .querySelector("tbody tr:last-child")
       .addEventListener("click", pokemonClicked);
+
+  function pokemonClicked() {
+    showPokeModal(poke);
+  }
 
 }
 
