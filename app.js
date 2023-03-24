@@ -7,12 +7,12 @@ https: window.addEventListener("load", initApp);
 async function initApp(){
     const pokeList = await getPokemons("json-data.json");
     console.log(pokeList);
-    let choice = prompt(`Write "a" for card style or "b" for table style?`);
+    let choice = prompt(`Write "t" for tables style. Click "ok" for default`);
     showStyle(choice, pokeList);
     
 }
 function showStyle(choice, poke){
-    if (choice === "b") {
+    if (choice === "t") {
       showPokeTable(poke);  
     }
     else {
@@ -88,10 +88,10 @@ async function getPokemons(url){
 function showPokeTable(poke){
 
     pokeTableHead();
-    for (let i = 0; i <= poke.length; i++){
-      addPokeRow(poke[i]);
-    } 
-    // poke.forEach(addPokeRow => {});
+    // for (let i = 0; i <= poke.length; i++){
+    //   addPokeRow(poke[i]);
+    // } 
+    poke.forEach(addPokeRow);
 }
 function pokeTableHead(){
   const myHTML = /*HTML*/ `
@@ -111,14 +111,14 @@ function pokeTableHead(){
 }
 function addPokeRow(poke) {
   const myHTML = /*HTML*/ `
-      <tr>
-          <td><img src="${poke.image}"></td>
-          <td>${poke.name}</td>
-          <td>${poke.ability}</td>
-          <td>${poke.gender}</td>
-          <td>${poke.generation}</td>
-      </tr>
-  `;
+    <tr>
+        <td><img src="${poke.image}"></td>
+        <td>${poke.name}</td>
+        <td>${poke.ability}</td>
+        <td>${poke.gender}</td>
+        <td>${poke.generation}</td>
+    </tr>
+    `;
   document.querySelector("tbody").insertAdjacentHTML("beforeend", myHTML);
     document
       .querySelector("tbody tr:last-child")
