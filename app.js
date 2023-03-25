@@ -7,8 +7,7 @@ https: window.addEventListener("load", initApp);
 async function initApp(){
     const pokeList = await getPokemons("json-data.json");
     console.log(pokeList);
-    let choice = "t";
-    // let choice = prompt(`Write "t" for tables style. Click "ok" for default`);
+    let choice = prompt(`Write "t" for tables style. Click "ok" for default`);
     showStyle(choice, pokeList);
     
 }
