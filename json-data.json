@@ -17,9 +17,9 @@
   "statsHP": "immortal",
   "statsAttack": "high",
   "statsDefence": "smell like fart",
-  "statsSpecialAttack": "tal",
-  "statsSpecialDefence": "tal",
-  "statsSpeed": "fast"
+  "statsSpecialAttack": 1564,
+  "statsSpecialDefence": 9859,
+  "statsSpeed": 98
 },
 {
   "name": "Exeggcute",
@@ -40,9 +40,9 @@
   "statsHP": "immortal",
   "statsAttack": "high",
   "statsDefence": "smell like fart",
-  "statsSpecialAttack": "tal",
-  "statsSpecialDefence": "tal",
-  "statsSpeed": "fast"
+  "statsSpecialAttack": 1564,
+  "statsSpecialDefence": 9859,
+  "statsSpeed": 98
 },
 {
   "name": "Exeggcute",
@@ -63,8 +63,8 @@
   "statsHP": "immortal",
   "statsAttack": "high",
   "statsDefence": "smell like fart",
-  "statsSpecialAttack": "tal",
-  "statsSpecialDefence": "tal",
-  "statsSpeed": "fast"
+  "statsSpecialAttack": 1564,
+  "statsSpecialDefence": 9859,
+  "statsSpeed": 98
 }
 ]

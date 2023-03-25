@@ -26,26 +26,16 @@ function showPokemon(pokemon) {
       <article class="grid-item">
         <img src="${pokemon.image}"></img>
         <h2>Name: <span> ${pokemon.name}</span></h2>
-        <h4>Description: <span>${pokemon.description}</span></h4>
           <section>
-          <h4> Information </h4>
               <ul>
                 <li>Ability: <span>${pokemon.ability}</span></li>
                 <li>DexIndex: <span>${pokemon.dexindex}</span></li>
                 <li>SubType: <span>${pokemon.subtype}</span></li>
                 <li>Weaknesses: <span>${pokemon.weaknesses}</span></li>
                 <li>Gender: <span>${pokemon.gender}</span></li>
-                <li>Weight: <span>${pokemon.weight}</span></li>
-                <li>Height: <span>${pokemon.height}</span></li>
                 <li>Generation: <span>${pokemon.generation}</span></li>
                 <li>Game Version: <span>${pokemon.spilversion}</span></li>
                 <li>Can Evolve: <span>${pokemon.canEvolve}</span></li>
-                <li>Stat HP: <span>${pokemon.statsHP}</span></li>
-                <li>Stats Attack: <span>${pokemon.statsAttack}</span></li>
-                <li>Stats Defence: <span>${pokemon.statsDefence}</span></li>
-                <li>Stats Special Attack: <span>${pokemon.statsSpecialAttack}</span></li>
-                <li>Stats Special Defence:<span>${pokemon.statsSpecialDefence}</span><li>
-                <li>Stats Speed: <span>${pokemon.statsSpeed}</span></li>  
               </ul>
             </section>
       </article>
@@ -64,7 +54,7 @@ function showPokeModal(pokemon){
   document.querySelector("#dialog-name").textContent = `${pokemon.name}`
   document.querySelector("#dialog-description").textContent = `${pokemon.description}`
   document.querySelector("#dialog-ability").textContent = `${pokemon.ability}`;
-  document.querySelector("#dialog-dexIndex").textContent = `${pokemon.dexIndex}`;
+  document.querySelector("#dialog-dexIndex").textContent = `${pokemon.dexindex}`;
   document.querySelector("#dialog-subType").textContent = `${pokemon.subType}`;
   document.querySelector("#dialog-weaknesses").textContent = `${pokemon.weaknesses}`;
   document.querySelector("#dialog-gender").textContent = `${pokemon.gender}`;
@@ -72,13 +62,13 @@ function showPokeModal(pokemon){
   document.querySelector("#dialog-height").textContent = `${pokemon.height}`;
   document.querySelector("#dialog-generation").textContent = `${pokemon.generation}`;
   document.querySelector("#dialog-gameVersion").textContent = `${pokemon.gameVersion}`;
-  document.querySelector("#dialog-evolve").textContent = `${pokemon.evolve}`;
-  document.querySelector("#dialog-attack").textContent = `${pokemon.attack}`;
-  document.querySelector("#dialog-defence").textContent = `${pokemon.defence}`;
-  document.querySelector("#dialog-specialAttack").textContent = `${pokemon.specialAttack}`
-  document.querySelector("#dialog-specialDefence").textContent = `${pokemon.specialDefence}`
-  document.querySelector("#dialog-speed").textContent = `${pokemon.speed}`;
-  // document.querySelector("#dialog-footprint").src = `${pokemon.footprint}`;
+  document.querySelector("#dialog-evolve").textContent = `${pokemon.canEvolve}`;
+  document.querySelector("#dialog-HP").textContent = `${pokemon.statsHP}`;
+  document.querySelector("#dialog-attack").textContent = `${pokemon.statsAttack}`;
+  document.querySelector("#dialog-defence").textContent = `${pokemon.statsDefence}`;
+  document.querySelector("#dialog-specialAttack").textContent = `${pokemon.statsSpecialAttack}`
+  document.querySelector("#dialog-specialDefence").textContent = `${pokemon.statsSpecialDefence}`
+  document.querySelector("#dialog-speed").textContent = `${pokemon.statsSpeed}`;
 }
 async function getPokemons(url){
   const response = await fetch(`${url}`);
