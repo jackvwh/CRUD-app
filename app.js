@@ -7,7 +7,8 @@ https: window.addEventListener("load", initApp);
 async function initApp(){
     const pokeList = await getPokemons("json-data.json");
     console.log(pokeList);
-    let choice = prompt(`Write "t" for tables style. Click "ok" for default`);
+    let choice = "t";
+    // let choice = prompt(`Write "t" for tables style. Click "ok" for default`);
     showStyle(choice, pokeList);
     
 }
@@ -34,7 +35,6 @@ function showPokemon(pokemon) {
                 <li>Weaknesses: <span>${pokemon.weaknesses}</span></li>
                 <li>Gender: <span>${pokemon.gender}</span></li>
                 <li>Generation: <span>${pokemon.generation}</span></li>
-                <li>Game Version: <span>${pokemon.spilversion}</span></li>
                 <li>Can Evolve: <span>${pokemon.canEvolve}</span></li>
               </ul>
             </section>
