@@ -31,19 +31,15 @@ function showRecipeModal(recipe) {
     showIngredientModal(recipe.ingredients[i].name, i);
   }
   document.querySelector("#dialog").showModal();
-  document.querySelector("#closeModal").addEventListener("click", callClearList);
+  document.querySelector("#closeModal").addEventListener("click", clearList);
   
-  function callClearList(){
-    clearList(recipe);
-  }
 }
-function clearList(recipe){
-    console.log("clearing list")
+function clearList(){
     // HTML element variables
-    for (let i = 0; i < recipe.ingredients.length; i++) {
+    const listLength = document.querySelector("#ingredientList").children.length;
+    for (let i = 0; i < listLength; i++) {
       document.querySelector("#ingredientList li:last-child").remove(); 
-    }
-     
+    }   
 }
 async function getRecipes(url) {
   const response = await fetch(`${url}`);
