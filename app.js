@@ -7,19 +7,7 @@ https: window.addEventListener("load", initApp);
 async function initApp(){
     const pokeList = await getPokemons("https://raw.githubusercontent.com/cederdorff/dat-js/main/05-data/pokemons.json");
     console.log(pokeList);
-    let choice = prompt(`Write "t" for tables style. Click "ok" for default`);
-    showStyle(choice, pokeList);
-    
-}
-function showStyle(choice, poke){
-    if (choice === "t") {
-      showPokeTable(poke);  
-    }
-    else {
-      for (let i = 0; i <= poke.length; i++) {
-        showPokemon(poke[i]);
-      }
-    }
+    pokeList.forEach(showPokemon);
 }
 function showPokemon(pokemon) {
       const myHTML = /*HTML*/ `
