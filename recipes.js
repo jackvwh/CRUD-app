@@ -2,32 +2,22 @@
 // git@github.com:jackvwh/CRUD-app.git
 // https://raw.githubusercontent.com/jackvwh/CRUD-app/master/json-data.json
 
+/****** TO DO LIST  ******
+ * sort recipes object array 
+ * remove li elements from modal after modal close
+ * 
+*/
+
 https: window.addEventListener("load", initApp);
 
 async function initApp() {
   const recipeList = await getRecipes(
     "https://raw.githubusercontent.com/LakkenLak/p1-madplan/main/recipes.json"
   );
+  console.log(recipeList);
+    recipeList.sort();
     showRecipeTable(recipeList);
 
-}
-function showRecipe(recipe) {
-  const myHTML = /*HTML*/ `
-      <article class="grid-item">
-        <h2>Name: <span> ${recipe.name}</span></h2>
-        <h5>Ingredienser:</h5>
-      </article>
-      `;
-  document.querySelector("#recipes").insertAdjacentHTML("beforeend", myHTML);
-  for (let i = 0; i < recipe.ingredients.length; i++) {
-    showIngredient(recipe.ingredients[i].name, i);
-  }
-  document
-    .querySelector("#recipes article:last-child")
-    .addEventListener("click", recipeClicked);
-  function recipeClicked() {
-    showRecipeModal(recipe);
-  }
 }
 function showIngredient(ingredient, i) {
   const ingredients = /*HTML*/ `    
@@ -88,11 +78,27 @@ function addRecipeRow(recipeList) {
     </tr>
     `;
   document.querySelector("tbody").insertAdjacentHTML("beforeend", myHTML);
-  document
-    .querySelector("tbody tr:last-child")
-    .addEventListener("click", recipeClicked);
+  document.querySelector("tbody tr:last-child").addEventListener("click", recipeClicked);
 
   function recipeClicked() {
     showRecipeModal(recipeList);
+  }
+}
+function showRecipe(recipe) {
+  const myHTML = /*HTML*/ `
+      <article class="grid-item">
+        <h2>Name: <span> ${recipe.name}</span></h2>
+        <h5>Ingredienser:</h5>
+      </article>
+      `;
+  document.querySelector("#recipes").insertAdjacentHTML("beforeend", myHTML);
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    showIngredient(recipe.ingredients[i].name, i);
+  }
+  document
+    .querySelector("#recipes article:last-child")
+    .addEventListener("click", recipeClicked);
+  function recipeClicked() {
+    showRecipeModal(recipe);
   }
 }
