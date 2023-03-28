@@ -5,9 +5,11 @@
 https: window.addEventListener("load", initApp);
 
 async function initApp(){
-    const pokeList = await getPokemons("https://raw.githubusercontent.com/jackvwh/CRUD-app/master/json-data.json");
-    console.log(pokeList);
+    const pokeList = await getPokemons("https://raw.githubusercontent.com/cederdorff/dat-js/main/05-data/pokemons.json");
     pokeList.forEach(showPokemon);
+    // for (let i = 0; i <= pokeList.length; i++) {
+    //   showPokemon(pokeList[i]);
+    // }
 }
 function showPokemon(pokemon) {
       const myHTML = /*HTML*/ `
@@ -61,49 +63,5 @@ async function getPokemons(url){
   const response = await fetch(`${url}`);
   const pokemon = await response.json();
   return pokemon;
-}
-function showPokeTable(poke){
-
-    pokeTableHead();
-    // for (let i = 0; i <= poke.length; i++){
-    //   addPokeRow(poke[i]);
-    // } 
-    poke.forEach(addPokeRow);
-}
-function pokeTableHead(){
-  const myHTML = /*HTML*/ `
-      <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Ability</th>
-            <th>Gender</th>
-            <th>Generation</th>
-          </tr>
-      </thead>
-    `;
-      document
-        .querySelector("#poke-table")
-        .insertAdjacentHTML("beforeend", myHTML);
-}
-function addPokeRow(poke) {
-  const myHTML = /*HTML*/ `
-    <tr>
-        <td><img src="${poke.image}"></td>
-        <td>${poke.name}</td>
-        <td>${poke.ability}</td>
-        <td>${poke.gender}</td>
-        <td>${poke.generation}</td>
-    </tr>
-    `;
-  document.querySelector("tbody").insertAdjacentHTML("beforeend", myHTML);
-    document
-      .querySelector("tbody tr:last-child")
-      .addEventListener("click", pokemonClicked);
-
-  function pokemonClicked() {
-    showPokeModal(poke);
-  }
-
 }
 
