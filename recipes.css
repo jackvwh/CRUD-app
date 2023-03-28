@@ -212,8 +212,7 @@ dialog::backdrop {
 }
 
 .dialog-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    text-align: center;
 }
 
 dialog h4 {
