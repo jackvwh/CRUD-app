@@ -4,8 +4,6 @@
 
 /****** TO DO LIST  ******
  * sort recipes object array 
- * remove li elements from modal after modal close
- * 
 */
 
 https: window.addEventListener("load", initApp);
@@ -14,10 +12,7 @@ async function initApp() {
   const recipeList = await getRecipes(
     "https://raw.githubusercontent.com/LakkenLak/p1-madplan/main/recipes.json"
   );
-  console.log(recipeList);
-    recipeList.sort();
     showRecipeTable(recipeList);
-
 }
 function showIngredientModal(ingredient, i) {
   const ingredients = /*HTML*/ `    
