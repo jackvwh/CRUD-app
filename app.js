@@ -5,7 +5,7 @@
 https: window.addEventListener("load", initApp);
 
 async function initApp(){
-    const pokeList = await getPokemons("https://raw.githubusercontent.com/cederdorff/dat-js/main/05-data/pokemons.json");
+    const pokeList = await getPokemons("https://raw.githubusercontent.com/jackvwh/CRUD-app/master/json-data.json");
     console.log(pokeList);
     pokeList.forEach(showPokemon);
 }
