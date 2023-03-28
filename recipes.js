@@ -19,15 +19,6 @@ async function initApp() {
     showRecipeTable(recipeList);
 
 }
-function showIngredient(ingredient, i) {
-  const ingredients = /*HTML*/ `    
-       <li>${i + 1}: <span>${ingredient}</span></li>
-      `;
-  document
-    .querySelector("#recipes article:last-child")
-    .insertAdjacentHTML("beforeend", ingredients);
-  document;
-}
 function showIngredientModal(ingredient, i) {
   const ingredients = /*HTML*/ `    
        <li>${i + 1}: <span>${ingredient}</span></li>
@@ -40,10 +31,24 @@ function showIngredientModal(ingredient, i) {
 function showRecipeModal(recipe) {
   document.querySelector("#dialog-name").textContent = `${recipe.name}`;
   document.querySelector("#dialog-url").href = `${recipe.url}`;
+//   loop to show ingredients in modal
   for (let i = 0; i < recipe.ingredients.length; i++) {
     showIngredientModal(recipe.ingredients[i].name, i);
   }
   document.querySelector("#dialog").showModal();
+  document.querySelector("#closeModal").addEventListener("click", callClearList);
+  
+  function callClearList(){
+    clearList(recipe);
+  }
+}
+function clearList(recipe){
+    console.log("clearing list")
+    // HTML element variables
+    for (let i = 0; i < recipe.ingredients.length; i++) {
+      document.querySelector("#ingredientList li:last-child").remove(); 
+    }
+     
 }
 async function getRecipes(url) {
   const response = await fetch(`${url}`);
@@ -52,9 +57,6 @@ async function getRecipes(url) {
 }
 function showRecipeTable(recipeList) {
   recipeTableHead();
-  // for (let i = 0; i <= poke.length; i++){
-  //   addPokeRow(poke[i]);
-  // }
   recipeList.forEach(addRecipeRow);
 }
 function recipeTableHead() {
@@ -92,6 +94,7 @@ function showRecipe(recipe) {
       </article>
       `;
   document.querySelector("#recipes").insertAdjacentHTML("beforeend", myHTML);
+//   loop to show ingredient list
   for (let i = 0; i < recipe.ingredients.length; i++) {
     showIngredient(recipe.ingredients[i].name, i);
   }
@@ -101,4 +104,13 @@ function showRecipe(recipe) {
   function recipeClicked() {
     showRecipeModal(recipe);
   }
+}
+function showIngredient(ingredient, i) {
+  const ingredients = /*HTML*/ `    
+       <li>${i + 1}: <span>${ingredient}</span></li>
+      `;
+  document
+    .querySelector("#recipes article:last-child")
+    .insertAdjacentHTML("beforeend", ingredients);
+  document;
 }
