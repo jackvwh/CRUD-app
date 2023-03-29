@@ -1,5 +1,5 @@
 "use strict";
-// git@github.com:jackvwh/CRUD-app.git
+// git@github.com:jackvwh/Pokemon-data-app.git
 // https://raw.githubusercontent.com/jackvwh/CRUD-app/master/json-data.json
 
 https: window.addEventListener("load", initApp);
