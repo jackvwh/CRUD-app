@@ -1,7 +1,7 @@
 "use strict";
 
 /****** TO DO LIST  ******
- * sort recipes object array 
+ * sort recipes array 
 */
 
 https: window.addEventListener("load", initApp);
