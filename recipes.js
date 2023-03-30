@@ -7,7 +7,7 @@
 https: window.addEventListener("load", initApp);
 
 async function initApp() {
-  const recipeList = await getRecipes("recipes.json");
+  const recipeList = await getRecipes("https://raw.githubusercontent.com/LakkenLak/p1-madplan/main/recipes.json");
     showRecipeTable(recipeList);
 }
 async function getRecipes(url) {
