@@ -45,7 +45,7 @@ function showPokeModal(pokemon){
   document.querySelector("#dialog-weight").textContent = `${pokemon.weight}`;
   document.querySelector("#dialog-height").textContent = `${pokemon.height}`;
   document.querySelector("#dialog-generation").textContent = `${pokemon.generation}`;
-  document.querySelector("#dialog-gameVersion").textContent = `${pokemon.spilversion}`;
+  document.querySelector("#dialog-spilversion").textContent = `${pokemon.spilversion}`;
   document.querySelector("#dialog-evolve").textContent = `${pokemon.canEvolve}`;
   document.querySelector("#dialog-HP").textContent = `${pokemon.statsHP}`;
   document.querySelector("#dialog-attack").textContent = `${pokemon.statsAttack}`;
