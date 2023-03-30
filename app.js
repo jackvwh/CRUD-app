@@ -39,7 +39,7 @@ function showPokeModal(pokemon){
   document.querySelector("#dialog-description").textContent = `${pokemon.description}`
   document.querySelector("#dialog-ability").textContent = `${pokemon.ability}`;
   document.querySelector("#dialog-dexIndex").textContent = `${pokemon.dexindex}`;
-  document.querySelector("#dialog-subType").textContent = `${pokemon.subType}`;
+  document.querySelector("#dialog-subType").textContent = `${pokemon.subtype}`;
   document.querySelector("#dialog-weaknesses").textContent = `${pokemon.weaknesses}`;
   document.querySelector("#dialog-gender").textContent = `${pokemon.gender}`;
   document.querySelector("#dialog-weight").textContent = `${pokemon.weight}`;
