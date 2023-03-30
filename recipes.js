@@ -8,7 +8,13 @@ https: window.addEventListener("load", initApp);
 
 async function initApp() {
   const recipeList = await getRecipes("https://raw.githubusercontent.com/LakkenLak/p1-madplan/main/recipes.json");
+    recipeList.sort(compareNames);
     showRecipeTable(recipeList);
+}
+// compareNames defines how to sort on names
+function compareNames(recipeA, recipeB) {
+  // localeCompare() method compares two strings in the current locale
+  return recipeA.name.localeCompare(recipeB.name);
 }
 async function getRecipes(url) {
   const response = await fetch(`${url}`);

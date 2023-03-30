@@ -4,7 +4,13 @@ https: window.addEventListener("load", initApp);
 
 async function initApp(){
     const pokeList = await getPokemons("https://raw.githubusercontent.com/cederdorff/dat-js/main/05-data/pokemons.json");
+    pokeList.sort(compareNames);
     pokeList.forEach(showPokemon);
+}
+// compareNames defines how to sort on names
+function compareNames(pokemonA, pokemonB) {
+  // localeCompare() method compares two strings in the current locale
+  return pokemonA.name.localeCompare(pokemonB.name);
 }
 function showPokemon(pokemon) {
       const myHTML = /*HTML*/ `
