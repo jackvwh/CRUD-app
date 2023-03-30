@@ -1,15 +1,10 @@
 "use strict";
-// git@github.com:jackvwh/Pokemon-data-app.git
-// https://raw.githubusercontent.com/jackvwh/CRUD-app/master/json-data.json
 
 https: window.addEventListener("load", initApp);
 
 async function initApp(){
     const pokeList = await getPokemons("https://raw.githubusercontent.com/cederdorff/dat-js/main/05-data/pokemons.json");
     pokeList.forEach(showPokemon);
-    // for (let i = 0; i <= pokeList.length; i++) {
-    //   showPokemon(pokeList[i]);
-    // }
 }
 function showPokemon(pokemon) {
       const myHTML = /*HTML*/ `
